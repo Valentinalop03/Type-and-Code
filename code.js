@@ -1,5 +1,5 @@
 export const configurazione = {
-  testo: "E",
+  testo: "U",
 
   dimensione: 0.8,
   interlinea: 0.7,
@@ -42,9 +42,6 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  let r = map(volume * 10, 0, 1, 0, 255);
-  console.log(r);
-
   // push();
   // stroke(255, 255, 0);
   // translate(x, y);
@@ -55,10 +52,14 @@ export function disegnaPunto({
   // rect(0, 0, lunghezza);
   // pop();
 
+  // let n = 0;
+  let n = random(0, 20);
+  // let n = noise(x, y, frameCount) * 20;
+
   push();
   noStroke();
   fill(255, 50);
-  translate(x, y);
+  translate(x + n, y + n);
   rotate(frameCount + indice * 10);
   ellipse(20, 0, 10, 20);
   pop();
