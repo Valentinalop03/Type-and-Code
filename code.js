@@ -1,15 +1,15 @@
 export const configurazione = {
-  testo: "S",
+  testo: "E",
 
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
-  sensibilitàMicrofonoBase: 1,
+  sensibilitàMicrofonoBase: 100,
   densitàPuntiBase: 1,
 
-  nascondiInterfaccia: false,
+  nascondiInterfaccia: true,
 };
 
 /**
@@ -42,18 +42,29 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  const size = sin((frameCount + indice) * 6) * ((volume * unita) / 2) * unita;
+  push();
+  translate(x, y);
+  rotate(angolo + 90 + frameCount + indice);
+  let lunghezza = map(volume, 0, 1, 50, 200);
+  // line(-lunghezza / 2, 0, lunghezza / 2, 0);
+  rectMode(CENTER);
+  noFill();
+  rect(0, 0, lunghezza);
 
-  if (indice % 2 == 0) {
-    fill("black");
-  } else {
-    fill("white");
-  }
-  noStroke();
+  pop();
+
+  //push();
+  // translate(x, y);
+  //rotate(random(0, 10));
+  //fill("LIGHTBLUE");
+  //translate(volume * 1000, 8);
+  //ellipse(0, 0, 10, 100);
+  //pop();
 
   push();
   translate(x, y);
-  ellipse(0, 0, size);
+  rotate(frameCount + indice * 10);
+  ellipse(20, 0, 10, 20);
   pop();
 }
 
@@ -70,6 +81,7 @@ export function caricamentoRisorse() {}
 export function impostazioni() {
   frameRate(30);
   angleMode(DEGREES);
+  rectMode(CENTER);
 }
 
 /**
@@ -77,11 +89,11 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("deeppink");
+  background(100, 100, 100, 15);
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("white");
-  disegnaTesto();
+  //fill("black");
+  //disegnaTesto();
 }
 
 /**
@@ -92,4 +104,8 @@ export function sopra(disegnaTesto) {
   // [INFO] Rimuovi il commento per disegnare il testo
   // fill("black");
   // disegnaTesto();
+}
+
+function mouseClicked() {
+  userStartAudio();
 }
