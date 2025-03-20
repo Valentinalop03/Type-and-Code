@@ -4,10 +4,10 @@ export const configurazione = {
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
-  percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
+  percorsoFont: "./assets/inclin.otf",
 
   sensibilitàMicrofonoBase: 100,
-  densitàPuntiBase: 1,
+  densitàPuntiBase: 1.5,
 
   nascondiInterfaccia: true,
 };
@@ -42,26 +42,22 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  push();
-  translate(x, y);
-  rotate(angolo + 90 + frameCount + indice);
-  let lunghezza = map(volume, 0, 1, 50, 200);
-  // line(-lunghezza / 2, 0, lunghezza / 2, 0);
-  rectMode(CENTER);
-  noFill();
-  rect(0, 0, lunghezza);
+  let r = map(volume * 10, 0, 1, 0, 255);
+  console.log(r);
 
-  pop();
-
-  //push();
+  // push();
+  // stroke(255, 255, 0);
   // translate(x, y);
-  //rotate(random(0, 10));
-  //fill("LIGHTBLUE");
-  //translate(volume * 1000, 8);
-  //ellipse(0, 0, 10, 100);
-  //pop();
+  // rotate(angolo + 90 + frameCount + indice);
+  // let lunghezza = map(volume, 0, 1, 50, 200);
+  // rectMode(CENTER);
+  // noFill();
+  // rect(0, 0, lunghezza);
+  // pop();
 
   push();
+  noStroke();
+  fill(255, 50);
   translate(x, y);
   rotate(frameCount + indice * 10);
   ellipse(20, 0, 10, 20);
@@ -89,7 +85,7 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background(100, 100, 100, 15);
+  background(100, 10);
 
   // [INFO] Rimuovi il commento per disegnare il testo
   //fill("black");
