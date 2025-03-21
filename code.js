@@ -8,7 +8,6 @@ export const configurazione = {
 
   sensibilitàMicrofonoBase: 50,
   densitàPuntiBase: 1,
-
   nascondiInterfaccia: false,
 };
 
@@ -44,31 +43,9 @@ export function disegnaPunto({
 }) {
   push();
   translate(x, y);
-  rotate(angolo + 90 + frameCount + indice);
-  let lunghezza = map(volume / 8, 0, 1, 50, 200);
-  // line(-lunghezza / 2, 0, lunghezza / 2, 0);
-  rectMode(CENTER);
-  noFill();
-  stroke("yellow");
-  rect(0, 0, lunghezza);
-
-  pop();
-
-  push();
-  translate(x, y);
-  rotate(random(0, 50));
-  fill("LIGHTBLUE");
-  noStroke();
-  translate(volume, 8);
-  ellipse(0, 0, 50, 100);
-  pop();
-
-  push();
-  noStroke();
-  translate(x, y);
-  rotate(frameCount * 8 + indice * 6);
-  translate(volume * 50, 0);
-  ellipse(20, 0, 10, 20);
+  stroke("white");
+  line(0, 0, gamma, 0);
+  line(0, 0, 0, beta);
   pop();
 }
 
@@ -93,7 +70,7 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background(100, 100, 100, 15);
+  background(100, 30, 10, 19);
 
   // [INFO] Rimuovi il commento per disegnare il testo
   //fill("black");
