@@ -38,14 +38,16 @@ export function disegnaPunto({
   volume,
   frameCount,
   alpha = 0,
-  beta = 0,
-  gamma = 0,
+  beta = 400,
+  gamma = 400,
 }) {
   push();
   translate(x, y);
   stroke("white");
-  line(0, 0, gamma, 0);
-  line(0, 0, 0, beta);
+  line(0, 0, gamma * 100, 0);
+  line(0, 0, 0, beta * 100);
+  line(0, 0, gamma, beta);
+  line(0, 0, beta, gamma);
   pop();
 }
 
