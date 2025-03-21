@@ -6,7 +6,7 @@ export const configurazione = {
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
-  sensibilitàMicrofonoBase: 100,
+  sensibilitàMicrofonoBase: 50,
   densitàPuntiBase: 1,
 
   nascondiInterfaccia: true,
@@ -45,25 +45,29 @@ export function disegnaPunto({
   push();
   translate(x, y);
   rotate(angolo + 90 + frameCount + indice);
-  let lunghezza = map(volume, 0, 1, 50, 200);
+  let lunghezza = map(volume / 8, 0, 1, 50, 200);
   // line(-lunghezza / 2, 0, lunghezza / 2, 0);
   rectMode(CENTER);
   noFill();
+  stroke("yellow");
   rect(0, 0, lunghezza);
 
   pop();
 
-  //push();
-  // translate(x, y);
-  //rotate(random(0, 10));
-  //fill("LIGHTBLUE");
-  //translate(volume * 1000, 8);
-  //ellipse(0, 0, 10, 100);
-  //pop();
-
   push();
   translate(x, y);
-  rotate(frameCount + indice * 10);
+  rotate(random(0, 50));
+  fill("LIGHTBLUE");
+  noStroke();
+  translate(volume, 8);
+  ellipse(0, 0, 50, 100);
+  pop();
+
+  push();
+  noStroke();
+  translate(x, y);
+  rotate(frameCount * 8 + indice * 6);
+  translate(volume * 50, 0);
   ellipse(20, 0, 10, 20);
   pop();
 }
